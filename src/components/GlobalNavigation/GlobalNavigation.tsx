@@ -1,5 +1,7 @@
 import { NavLink } from 'react-router-dom';
 
+import Button from '~/components/Button/Button';
+import { useRouter } from '~/hooks/useRouter';
 import { gnbLinks } from '~/router/routerInfo';
 import authService from '~/service/auth.service';
 
@@ -8,8 +10,13 @@ interface GlobalNavigationProps {
 }
 
 const GlobalNavigation = ({ className }: GlobalNavigationProps) => {
+  const { refreshWindow } = useRouter();
   const isLogin = authService.isLogin();
   const links = gnbLinks(isLogin);
+  const onClickLogOut = () => {
+    authService.logout();
+    refreshWindow();
+  };
   return (
     <nav className={className}>
       <ul className="flex flex-col gap-4">
@@ -26,6 +33,7 @@ const GlobalNavigation = ({ className }: GlobalNavigationProps) => {
             </NavLink>
           </li>
         ))}
+        {isLogin && <Button onClick={onClickLogOut} text="로그아웃" />}
       </ul>
     </nav>
   );

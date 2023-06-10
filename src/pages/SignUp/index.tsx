@@ -1,14 +1,24 @@
+import authApi from '~/api/authApi';
 import Button from '~/components/Button/Button';
 import TextInput from '~/components/TextInput/TextInput';
 import useForm from '~/hooks/useForm';
+import { useRouter } from '~/hooks/useRouter';
+import { ROUTE } from '~/router/routerInfo';
 import { AuthValidateFormProps, authValidate } from '~/service/auth.validation';
 
 const SignUp = () => {
-  const submitCallback = async ({
-    email,
-    password,
-  }: // eslint-disable-next-line @typescript-eslint/no-empty-function
-  AuthValidateFormProps) => {};
+  const { routeTo } = useRouter();
+
+  const submitCallback = async ({ email, password }: AuthValidateFormProps) => {
+    try {
+      const response = await authApi.signUp(email, password);
+      const { message } = response;
+      alert(message);
+      routeTo(ROUTE.SIGN_IN);
+    } catch (error) {
+      alert(error);
+    }
+  };
 
   const { register, submitHandler, isTargetSatisfyValidate } = useForm({
     initialValues: {

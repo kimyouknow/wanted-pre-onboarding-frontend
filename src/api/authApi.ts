@@ -8,11 +8,14 @@ const authApi = {
       password,
     });
   },
-  login(email: string, password: string) {
-    return publicApi.post<{ message: string; token: string }>(API.AUTH.SIGNIN, {
-      email,
-      password,
-    });
+  signIn(email: string, password: string) {
+    return publicApi.post<{ message: string; access_token: string }>(
+      API.AUTH.SIGNIN,
+      {
+        email,
+        password,
+      },
+    );
   },
 };
 

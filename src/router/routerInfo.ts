@@ -3,13 +3,14 @@ import { ElementType } from 'react';
 import Main from '~/pages/Main';
 import SignIn from '~/pages/SignIn';
 import SignUp from '~/pages/SignUp';
+import TodoList from '~/pages/TodoList';
+import { applyFilters } from '~/utils/util';
 
 export const ROUTE = {
   HOME: '/',
   SIGN_IN: '/signin',
   SIGN_UP: '/signup',
-  A: '/a',
-  B: '/b',
+  TODO: '/todo',
 } as const;
 
 export interface RouterInfo {
@@ -41,7 +42,6 @@ export const routerInfoList: RouterInfo[] = [
     isInGnb: true,
     withLayoutHeader: false,
   },
-
   {
     label: 'SIGN UP',
     path: ROUTE.SIGN_UP,
@@ -51,18 +51,16 @@ export const routerInfoList: RouterInfo[] = [
     isInGnb: true,
     withLayoutHeader: false,
   },
+  {
+    label: 'TODO LIST',
+    path: ROUTE.TODO,
+    element: TodoList,
+    withAuthorization: true,
+    restricted: false,
+    isInGnb: true,
+    withLayoutHeader: true,
+  },
 ];
-
-type FilterFunction<T> = (arg: T) => boolean;
-
-const applyFilters = <T>(
-  items: T[],
-  filterFunctions: FilterFunction<T>[],
-): T[] =>
-  filterFunctions.reduce(
-    (filteredItems, filterFn) => filteredItems.filter(filterFn),
-    items,
-  );
 
 const withPrivate = (routerInfo: RouterInfo) =>
   routerInfo.withAuthorization || !routerInfo.restricted;
