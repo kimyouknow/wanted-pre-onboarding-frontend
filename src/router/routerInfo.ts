@@ -1,12 +1,12 @@
 import { ElementType } from 'react';
 
-import Login from '~/pages/Login';
 import Main from '~/pages/Main';
+import SignIn from '~/pages/SignIn';
 import SignUp from '~/pages/SignUp';
 
 export const ROUTE = {
   HOME: '/',
-  LOGIN: '/login',
+  SIGN_IN: '/signin',
   SIGN_UP: '/signup',
   A: '/a',
   B: '/b',
@@ -33,9 +33,9 @@ export const routerInfoList: RouterInfo[] = [
     withLayoutHeader: true,
   },
   {
-    label: 'LOGIN',
-    path: ROUTE.LOGIN,
-    element: Login,
+    label: 'SIGN IN',
+    path: ROUTE.SIGN_IN,
+    element: SignIn,
     withAuthorization: false,
     restricted: true,
     isInGnb: true,

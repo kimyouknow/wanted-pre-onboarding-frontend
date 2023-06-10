@@ -4,13 +4,13 @@ interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
   text: string;
 }
 
-const Button = memo(({ text, disabled, onClick }: ButtonProps) => {
-  console.log('Button', text);
+const Button = memo(({ text, disabled, onClick, ...rest }: ButtonProps) => {
   return (
     <button
       className="w- h-10 w-full rounded-md bg-blue-600 text-white hover:bg-blue-200 hover:text-blue-600 disabled:cursor-not-allowed disabled:opacity-30"
       disabled={disabled}
       onClick={onClick}
+      {...rest}
     >
       {text}
     </button>

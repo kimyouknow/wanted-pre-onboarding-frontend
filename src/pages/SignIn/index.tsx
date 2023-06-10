@@ -3,7 +3,7 @@ import TextInput from '~/components/TextInput/TextInput';
 import useForm from '~/hooks/useForm';
 import { AuthValidateFormProps, authValidate } from '~/service/auth.validation';
 
-const SignUp = () => {
+const SignIn = () => {
   const submitCallback = async ({
     email,
     password,
@@ -44,11 +44,11 @@ const SignUp = () => {
         <Button
           text="SUBMIT"
           disabled={!isSignUpValidate}
-          data-testid="signup-button"
+          data-testid="signin-button"
         />
       </form>
     </div>
   );
 };
 
-export default SignUp;
+export default SignIn;
