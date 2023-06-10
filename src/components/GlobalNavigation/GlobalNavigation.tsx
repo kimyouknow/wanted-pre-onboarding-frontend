@@ -7,7 +7,7 @@ interface GlobalNavigationProps {
 }
 
 const GlobalNavigation = ({ className }: GlobalNavigationProps) => {
-  const isLogin = true; // TODO 판단 여부 함수로 변경하기
+  const isLogin = false; // TODO 판단 여부 함수로 변경하기
   const links = gnbLinks(isLogin);
   return (
     <nav className={className}>

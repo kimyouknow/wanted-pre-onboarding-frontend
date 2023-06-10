@@ -9,7 +9,7 @@ interface PublicRouterProps {
 }
 
 const PublicRouter = ({ Component, restricted }: PublicRouterProps) => {
-  const isLogin = true; // TODO 판단 여부 함수로 변경하기
+  const isLogin = false; // TODO 판단 여부 함수로 변경하기
   return isLogin && restricted ? (
     <NotAllow
       warnMessage="로그인한 유저는 접근할 수 없어요"

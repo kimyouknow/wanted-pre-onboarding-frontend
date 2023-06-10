@@ -8,7 +8,7 @@ interface PrivateRouterProps {
 }
 
 const PrivateRouter = ({ Component }: PrivateRouterProps) => {
-  const isLogin = true; // TODO 판단 여부 함수로 변경하기
+  const isLogin = false; // TODO 판단 여부 함수로 변경하기
   return isLogin ? (
     <Component />
   ) : (
