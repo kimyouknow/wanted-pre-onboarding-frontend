@@ -2,13 +2,14 @@ import { ElementType } from 'react';
 
 import NotAllow from '~/pages/NotAllow';
 import { ROUTE } from '~/router/routerInfo';
+import authService from '~/service/auth.service';
 
 interface PrivateRouterProps {
   Component: ElementType;
 }
 
 const PrivateRouter = ({ Component }: PrivateRouterProps) => {
-  const isLogin = false; // TODO 판단 여부 함수로 변경하기
+  const isLogin = authService.isLogin();
   return isLogin ? (
     <Component />
   ) : (

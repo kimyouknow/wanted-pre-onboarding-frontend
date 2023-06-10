@@ -1,13 +1,14 @@
 import { NavLink } from 'react-router-dom';
 
 import { gnbLinks } from '~/router/routerInfo';
+import authService from '~/service/auth.service';
 
 interface GlobalNavigationProps {
   className?: string;
 }
 
 const GlobalNavigation = ({ className }: GlobalNavigationProps) => {
-  const isLogin = false; // TODO 판단 여부 함수로 변경하기
+  const isLogin = authService.isLogin();
   const links = gnbLinks(isLogin);
   return (
     <nav className={className}>
