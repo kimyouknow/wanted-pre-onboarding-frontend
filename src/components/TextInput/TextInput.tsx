@@ -18,6 +18,7 @@ const TextInput = memo(
         onBlur,
         errorMessage,
         type = 'text',
+        ...rest
       },
       ref,
     ) => {
@@ -37,6 +38,7 @@ const TextInput = memo(
               onChange={onChange}
               onBlur={onBlur}
               autoComplete="off"
+              {...rest}
             />
           </div>
           {errorMessage && (
