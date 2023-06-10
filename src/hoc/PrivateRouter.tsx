@@ -1,6 +1,6 @@
-import { ElementType } from 'react';
+import { ElementType, useEffect } from 'react';
 
-import NotAllow from '~/pages/NotAllow';
+import { useRouter } from '~/hooks/useRouter';
 import { ROUTE } from '~/router/routerInfo';
 import authService from '~/service/auth.service';
 
@@ -9,16 +9,20 @@ interface PrivateRouterProps {
 }
 
 const PrivateRouter = ({ Component }: PrivateRouterProps) => {
+  const { routeTo } = useRouter();
   const isLogin = authService.isLogin();
-  return isLogin ? (
-    <Component />
-  ) : (
-    <NotAllow
-      warnMessage="로그인한 유저만 접근할 수 있어요."
-      fallBackUrl={ROUTE.SIGN_IN}
-      fallbackMessage="로그인 페이지로 이동"
-    />
-  );
+
+  const shouldFallback = () => {
+    if (!isLogin) {
+      routeTo(ROUTE.SIGN_IN);
+    }
+  };
+
+  useEffect(() => {
+    shouldFallback();
+  }, []);
+
+  return <Component />;
 };
 
 export default PrivateRouter;
