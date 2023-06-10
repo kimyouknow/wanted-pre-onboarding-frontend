@@ -23,6 +23,9 @@
   "plugins": ["react", "import", "@typescript-eslint"],
   "ignorePatterns": ["dist/", "node_modules/"],
   "rules": {
+    "@typescript-eslint/no-unsafe-return": "off",
+    "@typescript-eslint/no-unsafe-member-access": "off",
+    "@typescript-eslint/no-unsafe-call": "off",
     "@typescript-eslint/no-unsafe-argument": "off",
     "@typescript-eslint/no-unsafe-assignment": "off",
     "react/function-component-definition": [
