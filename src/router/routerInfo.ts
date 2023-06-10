@@ -53,17 +53,6 @@ export const routerInfoList: RouterInfo[] = [
   },
 ];
 
-type FilterFunction<T> = (arg: T) => boolean;
-
-const applyFilters = <T>(
-  items: T[],
-  filterFunctions: FilterFunction<T>[],
-): T[] =>
-  filterFunctions.reduce(
-    (filteredItems, filterFn) => filteredItems.filter(filterFn),
-    items,
-  );
-
 const withPrivate = (routerInfo: RouterInfo) =>
   routerInfo.withAuthorization || !routerInfo.restricted;
 
