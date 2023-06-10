@@ -14,7 +14,7 @@ const PrivateRouter = ({ Component }: PrivateRouterProps) => {
   ) : (
     <NotAllow
       warnMessage="로그인한 유저만 접근할 수 있어요."
-      fallBackUrl={ROUTE.LOGIN}
+      fallBackUrl={ROUTE.SIGN_IN}
       fallbackMessage="로그인 페이지로 이동"
     />
   );
