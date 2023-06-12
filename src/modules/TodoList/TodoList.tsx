@@ -1,18 +1,19 @@
 import { useEffect, useState } from 'react';
 
 import todoApi from '~/api/domain/todoApi';
+import { useTodoProviderAction } from '~/context/todo/useTodoContext';
 import TodoElementList from '~/modules/TodoList/TodoElementList';
-import { TodoModel } from '~/types/todo.type';
 
 const TodoList = () => {
-  const [todoList, setTodoList] = useState<TodoModel[]>([]);
+  const { addTodoList } = useTodoProviderAction();
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState('');
 
   const fetchTodoList = async () => {
     try {
       const response = await todoApi.getTodoList();
-      setTodoList(response.data);
+      const newTodoList = response.data;
+      addTodoList(newTodoList);
     } catch (error) {
       console.error(error);
       setError('에러 발생~');
@@ -33,7 +34,7 @@ const TodoList = () => {
     return <div>{error}</div>;
   }
 
-  return <TodoElementList todoList={todoList} />;
+  return <TodoElementList />;
 };
 
 export default TodoList;
