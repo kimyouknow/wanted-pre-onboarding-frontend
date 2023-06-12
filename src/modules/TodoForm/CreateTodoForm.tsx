@@ -4,7 +4,7 @@ import TextInput from '~/components/TextInput/TextInput';
 import { useTodoProviderAction } from '~/context/todo/useTodoContext';
 import useForm from '~/hooks/useForm';
 
-const TodoForm = () => {
+const CreateTodoForm = () => {
   const { addTodoList } = useTodoProviderAction();
   const submitCallback = async ({ newTodo }: { newTodo: string }) => {
     try {
@@ -24,11 +24,11 @@ const TodoForm = () => {
     submitCallback,
   });
   return (
-    <form onSubmit={submitHandler}>
+    <form onSubmit={submitHandler} className="p-10">
       <TextInput data-testid="new-todo-input" {...register('newTodo')} />
       <Button data-testid="new-todo-add-button" text="추가" />
     </form>
   );
 };
 
-export default TodoForm;
+export default CreateTodoForm;
