@@ -1,6 +1,7 @@
 import authApi from '~/api/domain/authApi';
 import Button from '~/components/Button/Button';
 import TextInput from '~/components/TextInput/TextInput';
+import { TEST_ID } from '~/constants/testId.constant';
 import useForm from '~/hooks/useForm';
 import { useRouter } from '~/hooks/useRouter';
 import { ROUTE } from '~/router/routerInfo';
@@ -45,19 +46,19 @@ const SignIn = () => {
           label="Email"
           placeholder="Email address *"
           {...register('email')}
-          data-testid="email-input"
+          data-testid={TEST_ID.emailInput}
         />
         <TextInput
           label="Password"
           type="password"
           placeholder="Password *"
           {...register('password')}
-          data-testid="password-input"
+          data-testid={TEST_ID.passwordInput}
         />
         <Button
           text="SUBMIT"
           disabled={!isSignUpValidate}
-          data-testid="signin-button"
+          data-testid={TEST_ID.signInButton}
         />
       </form>
     </div>
