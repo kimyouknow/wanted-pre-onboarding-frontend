@@ -7,4 +7,7 @@ export const API = {
     SIGNIN: '/auth/signin',
     SIGNUP: '/auth/signup',
   },
+  TODO: {
+    INDEX: '/todos',
+  },
 };
