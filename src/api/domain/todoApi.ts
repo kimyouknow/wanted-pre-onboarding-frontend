@@ -8,7 +8,7 @@ const todoApi = {
     return privateApi.get<BaseResponseType<TodoModel[]>>(API.TODO.INDEX);
   },
   createTodo(todo: string) {
-    return privateApi.post<BaseResponseType<TodoModel[]>>(API.TODO.INDEX, {
+    return privateApi.post<BaseResponseType<TodoModel>>(API.TODO.INDEX, {
       todo,
     });
   },
