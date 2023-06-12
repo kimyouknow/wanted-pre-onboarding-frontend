@@ -4,7 +4,7 @@ import TodoElement from '~/modules/TodoElement/TodoElement';
 const TodoElementList = () => {
   const { todoList } = useTodoProviderState();
   return (
-    <ul>
+    <ul className="flex flex-col gap-5 ">
       {todoList.map(({ ...todo }) => (
         <TodoElement key={todo.id} {...todo} />
       ))}
