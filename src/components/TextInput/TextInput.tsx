@@ -2,7 +2,7 @@ import { InputHTMLAttributes, forwardRef, memo } from 'react';
 
 interface TextInputProps extends InputHTMLAttributes<HTMLInputElement> {
   id: string;
-  label: string;
+  label?: string;
   errorMessage: string | null | undefined;
 }
 
@@ -24,9 +24,11 @@ const TextInput = memo(
     ) => {
       return (
         <div className="flex w-full flex-col p-2">
-          <label className="mb-2 font-semibold" htmlFor={id}>
-            {label}
-          </label>
+          {label && (
+            <label className="mb-2 font-semibold" htmlFor={id}>
+              {label}
+            </label>
+          )}
           <div className="flex items-center">
             <input
               id={id}

@@ -1,11 +1,8 @@
+import { useTodoProviderState } from '~/context/todo/useTodoContext';
 import TodoElement from '~/modules/TodoElement/TodoElement';
-import { TodoModel } from '~/types/todo.type';
 
-interface TodoElementListProps {
-  todoList: TodoModel[];
-}
-
-const TodoElementList = ({ todoList }: TodoElementListProps) => {
+const TodoElementList = () => {
+  const { todoList } = useTodoProviderState();
   return (
     <ul>
       {todoList.map(({ ...todo }) => (

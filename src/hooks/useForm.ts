@@ -19,7 +19,7 @@ const FORM_MODE = {
 interface UseFormOptions<T> {
   initialValues: T;
   submitCallback: (inputValues: T) => Promise<void>;
-  validate: ValidateChecker<T>;
+  validate?: ValidateChecker<T>;
   mode?: keyof typeof FORM_MODE;
 }
 
@@ -48,6 +48,8 @@ const useForm = <T extends Record<string, string | any[]>>({
   validate,
   mode = FORM_MODE.onChange,
 }: UseFormOptions<T>) => {
+  const isValidateProvided = !!validate;
+
   const [inputValues, setInputValues] = useState<T>(initialValues);
   const [validateError, setValidateError] = useState<Record<keyof T, string>>(
     {} as Record<keyof T, string>,
@@ -63,17 +65,21 @@ const useForm = <T extends Record<string, string | any[]>>({
 
   const setAllValidateError = (errorObj: Record<keyof T, string>) =>
     getEntries(errorObj).reduce((acc, [key, value]) => {
-      acc[key] = validate[key](value);
+      acc[key] = isValidateProvided ? validate[key](value) : '';
       return acc;
     }, {} as Record<keyof T, string>);
 
   const isSatisfyAllValidates = (): boolean =>
-    getEntries(inputValues).every(([key, value]) => validate[key](value));
+    getEntries(inputValues).every(
+      ([key, value]) => isValidateProvided && validate[key](value),
+    );
 
   const isTargetSatisfyValidate = (...ids: Array<keyof T>): boolean =>
     ids.every(id => !validateError[id]);
 
   const _onChangeError = (id: keyof T, value: string) => {
+    if (!isValidateProvided) return;
+
     if (mode === FORM_MODE.onSubmit) {
       setValidateError(prev => ({ ...prev, [id]: validate[id](value) }));
     } else {
