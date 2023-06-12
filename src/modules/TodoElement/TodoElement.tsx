@@ -21,7 +21,7 @@ const TodoElement = ({
   const { updateTodo, deleteTodo } = useTodoProviderAction();
 
   const onClickCheckbox = async (event: ChangeEvent<HTMLInputElement>) => {
-    const newValue = event.target.value === 'on';
+    const newValue = event.target.checked;
     try {
       const response = await todoApi.updateTodo({
         id,
