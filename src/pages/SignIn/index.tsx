@@ -14,12 +14,12 @@ const SignIn = () => {
     try {
       const response = await authApi.signIn(email, password);
 
-      const { message, access_token: accessToken } = response.data;
-      alert(message);
+      const { access_token: accessToken } = response.data;
       authService.saveToken(accessToken);
+      alert('로그인 성공~');
       routeTo(ROUTE.TODO);
     } catch (error) {
-      alert(error);
+      alert('로그인 실패');
     }
   };
 

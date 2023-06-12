@@ -12,9 +12,10 @@ const SignUp = () => {
   const submitCallback = async ({ email, password }: AuthValidateFormProps) => {
     try {
       const response = await authApi.signUp(email, password);
+      alert('회원가입 성공~');
       routeTo(ROUTE.SIGN_IN);
     } catch (error) {
-      alert(error);
+      alert('회원가입 실패');
     }
   };
 
