@@ -33,7 +33,7 @@ const TodoElement = ({
       updateTodo(response.data);
       setIsCompleted(newValue);
     } catch (error) {
-      alert(error);
+      alert('수정 실패!');
     }
   };
 
@@ -42,7 +42,7 @@ const TodoElement = ({
       await todoApi.deleteTodo(id);
       deleteTodo(id);
     } catch (error) {
-      alert(error);
+      alert('삭제 실패!');
     }
   };
 

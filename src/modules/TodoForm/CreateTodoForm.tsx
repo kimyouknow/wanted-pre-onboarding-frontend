@@ -14,7 +14,7 @@ const CreateTodoForm = () => {
 
       addTodoList([newTodoModel]);
     } catch (error) {
-      alert(error);
+      alert('생성 실패~');
     }
   };
 

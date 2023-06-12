@@ -31,7 +31,7 @@ const EditTodoForm = ({
       updateTodo(newTodoModel);
       onClickEditButton();
     } catch (error) {
-      alert(error);
+      alert('수정 실패~');
     }
   };
 
