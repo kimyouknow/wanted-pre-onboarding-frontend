@@ -3,6 +3,7 @@ import { ChangeEvent, useState } from 'react';
 import todoApi from '~/api/domain/todoApi';
 import Button from '~/components/Button/Button';
 import CheckBoxInput from '~/components/CheckBoxInput/CheckBoxInput';
+import { TEST_ID } from '~/constants/testId.constant';
 import { useTodoProviderAction } from '~/context/todo/useTodoContext';
 import EditTodoForm from '~/modules/TodoForm/EditTodoForm';
 import { TodoModel } from '~/types/todo.type';
@@ -32,7 +33,7 @@ const TodoElement = ({
       updateTodo(response.data);
       setIsCompleted(newValue);
     } catch (error) {
-      alert(error);
+      alert('수정 실패!');
     }
   };
 
@@ -41,7 +42,7 @@ const TodoElement = ({
       await todoApi.deleteTodo(id);
       deleteTodo(id);
     } catch (error) {
-      alert(error);
+      alert('삭제 실패!');
     }
   };
 
@@ -72,12 +73,12 @@ const TodoElement = ({
             <span>{todo}</span>
           </label>
           <Button
-            data-testid="modify-button"
+            data-testid={TEST_ID.editTodoButton}
             text="수정"
             onClick={onClickEditButton}
           />
           <Button
-            data-testid="delete-button"
+            data-testid={TEST_ID.deleteTodoButton}
             text="삭제"
             onClick={onClickDeleteButton}
           />
