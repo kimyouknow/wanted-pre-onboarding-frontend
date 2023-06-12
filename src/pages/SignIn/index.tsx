@@ -1,4 +1,4 @@
-import authApi from '~/api/authApi';
+import authApi from '~/api/domain/authApi';
 import Button from '~/components/Button/Button';
 import TextInput from '~/components/TextInput/TextInput';
 import useForm from '~/hooks/useForm';
@@ -14,7 +14,7 @@ const SignIn = () => {
     try {
       const response = await authApi.signIn(email, password);
 
-      const { message, access_token: accessToken } = response;
+      const { message, access_token: accessToken } = response.data;
       alert(message);
       authService.saveToken(accessToken);
       routeTo(ROUTE.TODO);

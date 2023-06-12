@@ -1,4 +1,4 @@
-import authApi from '~/api/authApi';
+import authApi from '~/api/domain/authApi';
 import Button from '~/components/Button/Button';
 import TextInput from '~/components/TextInput/TextInput';
 import useForm from '~/hooks/useForm';
@@ -12,8 +12,6 @@ const SignUp = () => {
   const submitCallback = async ({ email, password }: AuthValidateFormProps) => {
     try {
       const response = await authApi.signUp(email, password);
-      const { message } = response;
-      alert(message);
       routeTo(ROUTE.SIGN_IN);
     } catch (error) {
       alert(error);
