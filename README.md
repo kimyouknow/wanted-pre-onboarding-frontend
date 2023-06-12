@@ -10,7 +10,7 @@ github URL: https://github.com/kimyouknow
 
 ```bash
 # clone project
-$ git clone
+$ git clone https://github.com/kimyouknow/wanted-pre-onboarding-frontend.git
 
 # Install dependencies
 $ npm install
@@ -21,4 +21,28 @@ $ npm start
 
 ## 데모 영상
 
-## 데모 영상은 배포 링크로 대체 가능하며, 배포가 되었고 배포된 사이트에서 기능이 모두 동작하면 가산점이 부여됩니다.
+[배포링크](https://wanted-pre-onboarding-frontend-7bcw1uh7u-kimyouknow.vercel.app)
+
+### Assignment 1 & Assignment 2
+
+https://github.com/kimyouknow/wanted-pre-onboarding-frontend/assets/71386219/a0dd7224-14ed-429b-9104-718d007bcfa8
+
+### Assignment 3
+
+https://github.com/kimyouknow/wanted-pre-onboarding-frontend/assets/71386219/5aabb5d2-4afd-423f-b169-5eb3cbcde6f9
+
+### Assignment 4
+
+https://github.com/kimyouknow/wanted-pre-onboarding-frontend/assets/71386219/a7687473-18e5-44d2-a2b7-84d9ba3eea47
+
+### Assignment 5 & Assignment 6
+
+https://github.com/kimyouknow/wanted-pre-onboarding-frontend/assets/71386219/b35b1088-9ce3-4b86-803f-251ce7c09e1c
+
+### Assignment 7
+
+https://github.com/kimyouknow/wanted-pre-onboarding-frontend/assets/71386219/34f82409-f85d-4377-b869-2282c126115e
+
+### Assignment 8 & Assignment 9 & Assignment 10
+
+https://github.com/kimyouknow/wanted-pre-onboarding-frontend/assets/71386219/57de9c19-aa2f-45c2-a1fd-02c7d2721f22
