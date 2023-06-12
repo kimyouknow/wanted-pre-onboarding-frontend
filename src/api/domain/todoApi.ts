@@ -12,6 +12,16 @@ const todoApi = {
       todo,
     });
   },
+  updateTodo(targetTodo: TodoModel) {
+    const { id, todo, isCompleted } = targetTodo;
+    return privateApi.put<BaseResponseType<TodoModel>>(
+      `${API.TODO.INDEX}/${id}`,
+      {
+        todo,
+        isCompleted,
+      },
+    );
+  },
 };
 
 export default todoApi;
