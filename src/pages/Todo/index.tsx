@@ -1,11 +1,11 @@
 import TodoProvider from '~/context/todo';
-import TodoForm from '~/modules/TodoForm/TodoForm';
+import CreateTodoForm from '~/modules/TodoForm/CreateTodoForm';
 import TodoList from '~/modules/TodoList/TodoList';
 
 const Todo = () => {
   return (
     <TodoProvider>
-      <TodoForm />
+      <CreateTodoForm />
       <TodoList />
     </TodoProvider>
   );

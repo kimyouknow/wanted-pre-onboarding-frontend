@@ -1,8 +1,8 @@
 import { InputHTMLAttributes, forwardRef, memo } from 'react';
 
 interface CheckBoxInputProps extends InputHTMLAttributes<HTMLInputElement> {
-  id: string;
-  label: string;
+  id?: string;
+  label?: string;
 }
 
 const CheckBoxInput = memo(
@@ -10,7 +10,7 @@ const CheckBoxInput = memo(
     ({ id, label, checked, onChange }, ref) => {
       return (
         <div>
-          <label htmlFor={id}>{label}</label>
+          {label && <label htmlFor={id}>{label}</label>}
           <input
             id={id}
             ref={ref}

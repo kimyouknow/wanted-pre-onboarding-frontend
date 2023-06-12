@@ -22,6 +22,9 @@ const todoApi = {
       },
     );
   },
+  deleteTodo(id: number) {
+    return privateApi.delete(`${API.TODO.INDEX}/${id}`);
+  },
 };
 
 export default todoApi;
