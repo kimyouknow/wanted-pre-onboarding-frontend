@@ -1,7 +1,7 @@
 import axios from 'axios';
 
-import { CustomInstance } from '~/api/api.type';
-import { onResponse, onResponseError } from '~/api/responseHandler';
+import { CustomInstance } from '~/api/config/api.type';
+import { onResponse, onResponseError } from '~/api/config/interceptor';
 import { ROOT_API_URL } from '~/constants/api.constant';
 
 const publicApi: CustomInstance = axios.create({

@@ -18,3 +18,9 @@ export interface CustomInstance extends AxiosInstance {
   put<T>(...params: Parameters<AxiosInstance['put']>): Promise<T>;
   patch<T>(...params: Parameters<AxiosInstance['patch']>): Promise<T>;
 }
+
+export interface BaseResponseType<T> extends AxiosResponse<T> {
+  status: number;
+  data: T;
+  message: string;
+}

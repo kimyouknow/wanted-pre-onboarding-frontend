@@ -1,19 +1,28 @@
-import { AxiosError, AxiosResponse } from 'axios';
+import { AxiosError, AxiosResponse, InternalAxiosRequestConfig } from 'axios';
 
-import { HttpError } from '~/api/customError';
+import { HttpError } from '~/api/config/customError';
+import authService from '~/service/auth.service';
 
-interface CustomServerError {
-  data: {
-    details?: string;
-  };
-}
+export const onRequest = (config: InternalAxiosRequestConfig) => {
+  try {
+    const accessToken = authService.getToken();
+    if (typeof accessToken !== 'string') {
+      throw Error('올바른 형식의 토큰이 없습니다.');
+    }
+    config.headers.Authorization = `Bearer ${accessToken}`;
+    return config;
+    throw new Error('로그인이 필요합니다.');
+  } catch (error) {
+    return Promise.reject(error);
+  }
+};
+
+export const onRequestError = (error: AxiosError) => {
+  return error;
+};
 
 export const onResponse = (response: AxiosResponse) => {
-  const data = response.data;
-
-  const { headers } = response;
-  // eslint-disable-next-line @typescript-eslint/no-unsafe-return
-  return { ...data, headers };
+  return response;
 };
 
 export const onResponseError = (error: AxiosError) => {
@@ -23,16 +32,9 @@ export const onResponseError = (error: AxiosError) => {
   if (error.response) {
     // 요청이 이루어졌으며 서버가 2xx의 범위를 벗어나는 상태 코드로 응답했습니다.
 
-    const { data } = error.response as CustomServerError;
-
     const {
       response: { status },
     } = error;
-
-    // 서버에서 보낸 custom 에러 메세지가 있을 경우 해당 메세지를 에러 메세지로 전달
-    if (data && data.details !== undefined) {
-      return Promise.reject(new HttpError(data.details, status));
-    }
 
     // 서버에서 보낸 custom 에러 메세지가 없을 경우 기본 메세지를 에러 메세지로 전달
     return Promise.reject(new HttpError(error.message, status));
