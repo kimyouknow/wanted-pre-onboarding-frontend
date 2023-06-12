@@ -3,7 +3,7 @@ import { ElementType } from 'react';
 import Main from '~/pages/Main';
 import SignIn from '~/pages/SignIn';
 import SignUp from '~/pages/SignUp';
-import TodoList from '~/pages/TodoList';
+import Todo from '~/pages/Todo';
 import { applyFilters } from '~/utils/util';
 
 export const ROUTE = {
@@ -52,9 +52,9 @@ export const routerInfoList: RouterInfo[] = [
     withLayoutHeader: false,
   },
   {
-    label: 'TODO LIST',
+    label: 'TODO',
     path: ROUTE.TODO,
-    element: TodoList,
+    element: Todo,
     withAuthorization: true,
     restricted: false,
     isInGnb: true,
