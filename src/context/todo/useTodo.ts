@@ -8,6 +8,7 @@ export interface TodoStateType {
 
 export interface TodoActionType {
   addTodoList: (newTodoList: TodoModel[]) => void;
+  updateTodo: (targetTodo: TodoModel) => void;
 }
 
 export const initState = {
@@ -21,9 +22,18 @@ const useTodo = () => {
     setTodoList(prev => [...prev, ...newTodoList]);
   };
 
+  const updateTodo = (targetTodo: TodoModel) => {
+    setTodoList(prev =>
+      prev.map(todo => (todo.id === targetTodo.id ? targetTodo : todo)),
+    );
+  };
+
   const states = useMemo(() => ({ todoList }), [todoList]);
 
-  const actions = useMemo(() => ({ addTodoList }), [addTodoList]);
+  const actions = useMemo(
+    () => ({ addTodoList, updateTodo }),
+    [addTodoList, updateTodo],
+  );
 
   return {
     states,
