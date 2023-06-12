@@ -22,7 +22,6 @@ const TodoForm = () => {
       newTodo: '',
     },
     submitCallback,
-    mode: 'onChange',
   });
   return (
     <form onSubmit={submitHandler}>
