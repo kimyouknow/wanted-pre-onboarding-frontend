@@ -1,7 +1,7 @@
 import { Outlet } from 'react-router-dom';
 
-import GlobalNavigation from '~/components/GlobalNavigation/GlobalNavigation';
 import Header from '~/components/Header/Header';
+import GlobalNavigation from '~/modules/GlobalNavigation/GlobalNavigation';
 
 const LayoutWithHeader = () => {
   return (
